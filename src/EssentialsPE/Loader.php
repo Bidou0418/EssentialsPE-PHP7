@@ -1237,22 +1237,22 @@ class Loader extends PluginBase{
             }
         }
         $mot = (new Random())->nextSignedFloat() * M_PI * 2;
-        $entity = Entity::createEntity("PrimedTNT", $level->getChunk($pos->x >> 4, $pos->z >> 4), new Compound("EssNuke", [
-            "Pos" => new Enum("Pos", [
-                new Double("", $pos->getFloorX() + 0.5),
-                new Double("", $pos->getFloorY()),
-                new Double("", $pos->getFloorZ() + 0.5)
+        $entity = Entity::createEntity("PrimedTNT", $level->getChunk($pos->x >> 4, $pos->z >> 4), new CompoundTag("EssNuke", [
+            "Pos" => new EnumTag("Pos", [
+                new DoubleTag("", $pos->getFloorX() + 0.5),
+                new DoubleTag("", $pos->getFloorY()),
+                new DoubleTag("", $pos->getFloorZ() + 0.5)
             ]),
-            "Motion" => new Enum("Motion", [
-                new Double("", -sin($mot) * 0.02),
-                new Double("", 0.2),
-                new Double("", -cos($mot) * 0.02)
+            "Motion" => new EnumTag("Motion", [
+                new DoubleTag("", -sin($mot) * 0.02),
+                new DoubleTag("", 0.2),
+                new DoubleTag("", -cos($mot) * 0.02)
             ]),
-            "Rotation" => new Enum("Rotation", [
-                new Float("", 0),
-                new Float("", 0)
+            "Rotation" => new EnumTag("Rotation", [
+                new FloatTag("", 0),
+                new FloatTag("", 0)
             ]),
-            "Fuse" => new Byte("Fuse", 80),
+            "Fuse" => new ByteTag("Fuse", 80),
         ]));
         $entity->spawnToAll();
     }
