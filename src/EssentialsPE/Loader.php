@@ -102,7 +102,7 @@ use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\ByteTag;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\DoubleTag;
-use pocketmine\nbt\tag\EnumTag;
+use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\FloatTag;
 use pocketmine\network\protocol\MobEffectPacket;
 use pocketmine\network\protocol\SetTimePacket;
@@ -1238,17 +1238,17 @@ class Loader extends PluginBase{
         }
         $mot = (new Random())->nextSignedFloat() * M_PI * 2;
         $entity = Entity::createEntity("PrimedTNT", $level->getChunk($pos->x >> 4, $pos->z >> 4), new CompoundTag("EssNuke", [
-            "Pos" => new EnumTag("Pos", [
+            "Pos" => new ListTag("Pos", [
                 new DoubleTag("", $pos->getFloorX() + 0.5),
                 new DoubleTag("", $pos->getFloorY()),
                 new DoubleTag("", $pos->getFloorZ() + 0.5)
             ]),
-            "Motion" => new EnumTag("Motion", [
+            "Motion" => new ListTag("Motion", [
                 new DoubleTag("", -sin($mot) * 0.02),
                 new DoubleTag("", 0.2),
                 new DoubleTag("", -cos($mot) * 0.02)
             ]),
-            "Rotation" => new EnumTag("Rotation", [
+            "Rotation" => new ListTag("Rotation", [
                 new FloatTag("", 0),
                 new FloatTag("", 0)
             ]),
